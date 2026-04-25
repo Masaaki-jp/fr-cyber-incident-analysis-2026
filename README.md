@@ -11,15 +11,12 @@ Interactive analysis of the 2026 ANTS data breach. Features Chart.js visuals and
 - **Data Visualization / データの可視化**: 
   - Visual breakdown of the 11.7 million compromised accounts using Chart.js.
   - Chart.jsを用いた、1,170万件の流出データの視覚的分析。
-- **AI Risk Assistant / AI リスクアシスタント**: 
-  - Integrated Gemini AI to provide personalized cybersecurity advice and alert templates.
-  - Gemini AIとの連携により、パーソナライズされた対策アドバイスや警告文の生成が可能。
-- **Privacy-First Design / セキュリティ設計**: 
-  - Your Gemini API key is stored only in your browser's `localStorage`. It is never sent to any server.
-  - APIキーはブラウザのローカルストレージにのみ保存。サーバーには送信されない安全な設計。
-- **Responsive Web Design / レスポンシブ設計**: 
-  - Built with Tailwind CSS, optimized for both desktop and mobile viewing.
-  - Tailwind CSSによる、PC・スマホ両対応のモダンなUI。
+- **Timeline Analysis / 時系列分析**: 
+  - Chronological report of the incident detection and official announcements.
+  - 検知から公式発表までの経緯をタイムライン形式で整理。
+- **Responsive Design / レスポンシブ設計**: 
+  - Optimized for both desktop and mobile viewing.
+  - PC・スマートフォンどちらからでも見やすい表示。
 
 ## 🛠 Tech Stack / 使用技術
 
