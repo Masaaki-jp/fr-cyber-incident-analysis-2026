@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>インフォグラフィック：2026年 ANTSセキュリティ事案</title>
+    <title>2026年 ANTSセキュリティ事案分析レポート</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -31,15 +31,12 @@
             margin-left: auto;
             margin-right: auto;
             height: 350px;
-            max-height: 400px;
         }
         @media (max-width: 768px) {
-            .chart-container {
-                height: 300px;
-            }
+            .chart-container { height: 300px; }
         }
         .animate-fade-in {
-            animation: fadeIn 0.5s ease-out forwards;
+            animation: fadeIn 0.6s ease-out forwards;
             opacity: 0;
             transform: translateY(10px);
         }
@@ -56,19 +53,6 @@
             background-color: #000091;
             border-radius: 50%;
         }
-        .loader {
-            border: 3px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 3px solid #000091;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-            display: inline-block;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
 </head>
 <body class="bg-brand-light text-brand-dark antialiased font-sans">
@@ -76,7 +60,7 @@
     <nav class="bg-brand-blue text-white sticky top-0 z-50 shadow-md border-b-4 border-brand-red">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="font-bold text-xl tracking-wide">&#128302; サイバーセキュリティ観測所</div>
-            <div class="text-sm font-semibold bg-white text-brand-blue px-3 py-1 rounded-full shadow-inner">2026年 ANTS事案レポート</div>
+            <div class="text-sm font-semibold bg-white text-brand-blue px-3 py-1 rounded-full">調査報告：ANTS 2026</div>
         </div>
     </nav>
 
@@ -98,96 +82,77 @@
                     <div class="text-5xl font-black text-brand-red mb-1">11.7M</div>
                     <div class="text-sm font-medium text-gray-600">&#9888;&#65039; 個人および事業者</div>
                 </div>
+                
                 <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-brand-blue transform hover:-translate-y-1 transition duration-300">
-                    <div class="text-sm text-gray-500 font-bold uppercase tracking-wider mb-2">検知日</div>
-                    <div class="text-4xl font-black text-brand-blue mb-2 mt-1">2026年4月15日</div>
-                    <div class="text-sm font-medium text-gray-600">&#128197; 調査継続中</div>
+                    <div class="text-sm text-gray-500 font-bold uppercase tracking-wider mb-2">事案発生（検知）</div>
+                    <div class="text-4xl font-black text-brand-blue mb-2 mt-1">2026年4月</div>
+                    <div class="text-sm font-medium text-gray-600">&#128197; 4/15に異常を検知</div>
                 </div>
+                
                 <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-brand-accent transform hover:-translate-y-1 transition duration-300">
-                    <div class="text-sm text-gray-500 font-bold uppercase tracking-wider mb-2">特定された侵入経路</div>
+                    <div class="text-sm text-gray-500 font-bold uppercase tracking-wider mb-2">特定された侵入元</div>
                     <div class="text-3xl font-black text-brand-dark mb-2 mt-2">ants.gouv.fr</div>
-                    <div class="text-sm font-medium text-gray-600">&#127760; 主要ポータルサイト</div>
+                    <div class="text-sm font-medium text-gray-600">&#127760; 公式管理ポータル</div>
                 </div>
             </div>
         </section>
 
         <section class="bg-white rounded-2xl shadow-lg p-6 md:p-10 border border-gray-100 animate-fade-in" style="animation-delay: 0.2s;">
             <div class="mb-8">
-                <h2 class="text-2xl font-bold text-brand-blue mb-3">&#128193; 流出データの分類</h2>
+                <h2 class="text-2xl font-bold text-brand-blue mb-3">&#128193; 流出データの分類とリスク</h2>
             </div>
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div class="chart-container">
                     <canvas id="dataDistributionChart"></canvas>
                 </div>
+
                 <div class="space-y-6">
                     <div class="p-5 bg-blue-50 rounded-lg border border-blue-100">
                         <h3 class="font-bold text-lg text-brand-blue flex items-center mb-3">
-                            <span class="text-2xl mr-2">&#128100;</span> 全員流出の可能性が高い項目
+                            <span class="text-2xl mr-2">&#128100;</span> 流出した主要な個人属性
                         </h3>
-                        <div class="grid grid-cols-2 gap-2 text-sm text-gray-700">
-                            <div>&#10004; ログインID</div>
-                            <div>&#10004; 氏名</div>
-                            <div>&#10004; メールアドレス</div>
-                            <div>&#10004; 生年月日</div>
-                        </div>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li class="flex items-center"><span class="text-brand-red mr-2">●</span> <strong>基本情報:</strong> 氏名、敬称、生年月日</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">●</span> <strong>連絡先:</strong> メールアドレス、電話番号、住所</li>
+                            <li class="flex items-center"><span class="text-brand-red mr-2">●</span> <strong>識別子:</strong> ログインID（※パスワードは含まれず）</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-4 bg-amber-50 rounded-lg border border-amber-200">
+                        <p class="text-sm text-amber-800 leading-relaxed">
+                            <strong>二次被害の懸念:</strong> 流出した情報を組み合わせることで、精巧なフィッシング詐欺やなりすましが行われるリスクが極めて高い状態です。
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="bg-blue-50 rounded-2xl shadow-inner p-6 md:p-10 border-2 border-brand-blue border-dashed animate-fade-in" style="animation-delay: 0.3s;">
-            <div class="mb-6">
-                <h2 class="text-2xl font-bold text-brand-blue flex items-center">
-                    <span class="mr-2">✨</span> AI 予防アシスタント
-                </h2>
-                <p class="text-gray-600 mt-2">この機能を利用するには、あなたの <strong>Google AI Studio APIキー</strong> が必要です。キーはブラウザ内にのみ保存され、外部に送信されることはありません。</p>
-            </div>
-
-            <div class="mb-8 bg-white p-4 rounded-lg border border-blue-200 shadow-sm flex flex-col md:flex-row gap-4 items-end">
-                <div class="flex-grow w-full">
-                    <label for="userApiKey" class="block text-xs font-bold text-gray-500 uppercase mb-1">Gemini API Key</label>
-                    <input type="password" id="userApiKey" placeholder="AI Studioから取得したキーを入力" 
-                           class="w-full px-4 py-2 border rounded border-gray-300 focus:ring-2 focus:ring-brand-blue focus:outline-none">
+        <section class="animate-fade-in" style="animation-delay: 0.3s;">
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10 border border-gray-100">
+                <h2 class="text-2xl font-bold text-brand-blue mb-6">属性別の流出によるリスク感度</h2>
+                <div class="chart-container">
+                    <canvas id="sensitivityChart"></canvas>
                 </div>
-                <button onclick="saveKey()" class="bg-gray-800 text-white px-6 py-2 rounded font-bold hover:bg-black transition">
-                    保存
-                </button>
-            </div>
-
-            <div class="flex gap-2 mb-8">
-                <button onclick="askAI('advice')" class="bg-brand-blue text-white px-4 py-2 rounded-lg font-bold hover:bg-opacity-90 shadow-md">
-                    リスクを分析する
-                </button>
-                <button onclick="askAI('warning')" class="bg-white text-brand-blue border-2 border-brand-blue px-4 py-2 rounded-lg font-bold hover:bg-gray-50 shadow-md">
-                    周囲に警告を送る
-                </button>
-            </div>
-
-            <div id="ai-response-container" class="hidden bg-white p-6 rounded-xl border border-blue-200 shadow-sm">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-xs font-bold uppercase tracking-widest text-brand-blue">Gemini AI による分析</span>
-                    <button onclick="closeAI()" class="text-gray-400 hover:text-gray-600 font-bold text-xl">&times;</button>
-                </div>
-                <div id="ai-loading" class="hidden flex flex-col items-center py-8">
-                    <div class="loader mb-4"></div>
-                    <p class="text-sm text-gray-500 italic">分析中...</p>
-                </div>
-                <div id="ai-content" class="text-gray-800 leading-relaxed space-y-4"></div>
             </div>
         </section>
 
         <section class="bg-slate-800 text-white rounded-2xl shadow-lg p-6 md:p-10 mb-8 animate-fade-in" style="animation-delay: 0.4s;">
             <div class="mb-8">
-                <h2 class="text-2xl font-bold text-white mb-3">&#8987; 時系列</h2>
+                <h2 class="text-2xl font-bold text-white mb-3">&#8987; 事案発生の時系列</h2>
             </div>
+
             <div class="pl-4 border-l-2 border-brand-blue relative space-y-8">
                 <div class="relative timeline-node pl-6">
                     <div class="font-bold text-brand-accent mb-1">2026年4月15日</div>
-                    <p class="text-gray-300 text-sm">ANTSのチームがデータベースへの不審なアクセスを検知。</p>
+                    <div class="text-lg font-semibold mb-1">技術的検知</div>
+                    <p class="text-gray-300 text-sm">ANTS運用チームがデータベースへの不審な大量アクセスを検知。即座に調査を開始。</p>
                 </div>
+                
                 <div class="relative timeline-node pl-6">
                     <div class="font-bold text-brand-accent mb-1">2026年4月24日</div>
-                    <p class="text-gray-300 text-sm">流出規模が1,170万アカウントであることを確定。</p>
+                    <div class="text-lg font-semibold mb-1">公式発表と被害確定</div>
+                    <p class="text-gray-300 text-sm">影響を受けたアカウントが約1,170万件に達すると発表。全ユーザーにパスワード変更（二次被害防止）を推奨。</p>
                 </div>
             </div>
         </section>
@@ -195,103 +160,55 @@
     </main>
 
     <footer class="bg-gray-100 text-gray-500 py-6 text-center text-sm border-t">
-        <p>AI搭載型インフォグラフィック (キーはブラウザ保存) - 2026</p>
+        <p>サイバーセキュリティ教育・分析資料 - 2026年版</p>
     </footer>
 
     <script>
-        const GEMINI_MODEL = "gemini-2.5-flash-preview-09-2025";
-
-        // ページ読み込み時に保存されたキーがあればセット
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedKey = localStorage.getItem('ants_gemini_key');
-            if (savedKey) {
-                document.getElementById('userApiKey').value = savedKey;
-            }
-            initCharts();
-        });
-
-        function saveKey() {
-            const key = document.getElementById('userApiKey').value;
-            localStorage.setItem('ants_gemini_key', key);
-            alert('APIキーをブラウザに保存しました。');
-        }
-
-        async function callGemini(prompt, systemInstruction = "") {
-            const apiKey = document.getElementById('userApiKey').value;
-            if (!apiKey) {
-                alert('先にAPIキーを入力・保存してください。');
-                return null;
-            }
-
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                systemInstruction: { parts: [{ text: systemInstruction }] }
-            };
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const result = await response.json();
-                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
-                    return result.candidates[0].content.parts[0].text;
-                }
-                if (result.error) throw new Error(result.error.message);
-                throw new Error("応答の取得に失敗しました。");
-            } catch (e) {
-                throw e;
-            }
-        }
-
-        async function askAI(mode) {
-            const container = document.getElementById('ai-response-container');
-            const loading = document.getElementById('ai-loading');
-            const content = document.getElementById('ai-content');
-            
-            container.classList.remove('hidden');
-            loading.classList.remove('hidden');
-            content.innerHTML = "";
-
-            const systemPrompt = "あなたはサイバーセキュリティの専門家です。冷静かつ明確に、箇条書きを使って回答してください。";
-            let prompt = mode === 'advice' 
-                ? "ANTSから1,170万人の氏名、メール等が流出しました。市民が今すぐ行うべき3つのデジタルセキュリティ対策を提案して。"
-                : "2026年ANTSデータ流出について、高齢の親に送るためのフィッシング詐欺注意喚起メッセージ案を作成して。絶対避けるべき行動を強調して。";
-
-            try {
-                const response = await callGemini(prompt, systemPrompt);
-                if (!response) return;
-                loading.classList.add('hidden');
-                content.innerHTML = response
-                    .replace(/\n\n/g, '<br><br>')
-                    .replace(/\* (.*?)(<br>|$)/g, '<li class="ml-4">$1</li>')
-                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-            } catch (err) {
-                loading.classList.add('hidden');
-                content.innerHTML = `<div class="text-red-500 font-bold p-4 bg-red-50 rounded">エラー: ${err.message}</div>`;
-            }
-        }
-
-        function closeAI() {
-            document.getElementById('ai-response-container').classList.add('hidden');
-        }
-
-        // --- Charts ---
         function initCharts() {
+            // Doughnut Chart
             const ctxD = document.getElementById('dataDistributionChart').getContext('2d');
             new Chart(ctxD, {
                 type: 'doughnut',
                 data: {
-                    labels: ["組織的流出", "部分的流出"],
-                    datasets: [{ data: [6, 3], backgroundColor: ['#000091', '#F59E0B'], borderWidth: 0 }]
+                    labels: ["基本属性（氏名等）", "連絡先（メール等）", "識別子（ID等）"],
+                    datasets: [{
+                        data: [4, 4, 2],
+                        backgroundColor: ['#000091', '#E1000F', '#F59E0B'],
+                        borderWidth: 0
+                    }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
             });
 
-            const ctxB = document.getElementById('sensitivityChart'); // ダミー（必要なら前のコードと同様に実装可）
+            // Bar Chart
+            const ctxB = document.getElementById('sensitivityChart').getContext('2d');
+            new Chart(ctxB, {
+                type: 'bar',
+                data: {
+                    labels: ["連絡先情報", "本人確認情報", "ログインID"],
+                    datasets: [{
+                        label: 'リスクスコア',
+                        data: [9.5, 8.5, 7.0],
+                        backgroundColor: '#E1000F'
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { x: { max: 10, beginAtZero: true } },
+                    plugins: { legend: { display: false } }
+                }
+            });
         }
+
+        document.addEventListener('DOMContentLoaded', initCharts);
     </script>
 </body>
 </html>
